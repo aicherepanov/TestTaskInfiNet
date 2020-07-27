@@ -1,0 +1,25 @@
+Value PTP_role (\w+)
+Value Uptime (\d+\w \d+\w \d+\w)
+Value Link_time (\d+\w \d+\w \d+\w)
+Value State (\w+)
+Value Temperature (\d+ \w)
+Value Distance (\d+.\w)
+Value TX_power (\S+ / \S+ \w+)
+Value MCS_Downlink_0 (\S+ \S+)
+Value RSSI_Downlink_0 (\S+ \w+)
+Value MCS_Downlink_1 (\S+ \S+)
+Value RSSI_Downlink_1 (\S+ \w+)
+Value MCS_Uplink_0 (\S+ \S+)
+Value RSSI_Uplink_0 (\S+ \w+)
+Value MCS_Uplink_1 (\S+ \S+)
+Value RSSI_Uplink_1 (\S+ \w+)
+
+Start
+  ^.*PTP role +${PTP_role}
+  ^.*Uptime +${Uptime}
+  ^.*Link time +${Link_time}
+  ^.*State +${State}.*Temperature +${Temperature}
+  ^.*Distance +${Distance}
+  ^.*TX power +${TX_power}
+  ^.*MCS +\S +${MCS_Downlink_0} + \S +${MCS_Downlink_1} + \S +${MCS_Uplink_0} + \S +${MCS_Uplink_1}
+  ^.*RSSI +\S +${RSSI_Downlink_0} +\S +${RSSI_Downlink_1} +\S +${RSSI_Uplink_0} +\S +${RSSI_Uplink_1} -> Record
